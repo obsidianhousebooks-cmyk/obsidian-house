@@ -1,4 +1,4 @@
-import { typography } from "@/lib/render/typography"
+import { typography } from "@/lib/systems/typography"
 
 /*
 ━━━━━━━━━━━━━━━━━━━

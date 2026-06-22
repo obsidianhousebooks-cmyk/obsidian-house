@@ -28,7 +28,7 @@ import {
 
     calculateTitleScore
 
-} from "@/lib/calculateTitleScore"
+} from "@/lib/editorial/calculateTitleScore"
 
 const openai = new OpenAI({
 
