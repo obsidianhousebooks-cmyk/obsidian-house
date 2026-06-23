@@ -1,9 +1,0 @@
-# Query: languageSistem
-# ContextLines: 1
-
-1 result - 1 file
-
-C:\Users\jemoa\OneDrive\Área de Trabalho\kdp-pro\lib\ai\generateTitles.ts:
-  12  
-  13: } from "@/lib/editorial/languageSystem"
-  14  

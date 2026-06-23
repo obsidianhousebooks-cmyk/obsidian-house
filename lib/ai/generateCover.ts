@@ -4,10 +4,8 @@ import {
 
 } from "./client"
 
-import {
-
-    narrativeBible
-
+import type {
+    NarrativeBible
 } from "@/lib/editorial/narrativeBible"
 
 import {
@@ -28,6 +26,8 @@ interface GenerateCoverInput {
 
     subtitle: string
 
+    narrativeBible: NarrativeBible
+
 }
 
 /*
@@ -39,10 +39,10 @@ GENERATE COVER
 export async function generateCover({
 
     title,
+    subtitle,
+    narrativeBible
 
-    subtitle
-
-}: GenerateCoverInput): Promise<string> {
+}: GenerateCoverInput) {
 
     try {
 
@@ -107,7 +107,7 @@ ${narrativeBible.genre}
 EMOTIONAL TONE
 ━━━━━━━━━━━━━━━━━━━
 
-${narrativeBible.tone
+${narrativeBible.atmosphere.emotional
                 .map(item => `- ${item}`)
                 .join("\n")}
 
@@ -115,7 +115,7 @@ ${narrativeBible.tone
 ATMOSPHERE
 ━━━━━━━━━━━━━━━━━━━
 
-${narrativeBible.atmosphere.environments
+${narrativeBible.atmosphere.environmental
                 .slice(0, 8)
                 .map(item => `- ${item}`)
                 .join("\n")}
@@ -124,7 +124,7 @@ ${narrativeBible.atmosphere.environments
 SYMBOLIC ELEMENTS
 ━━━━━━━━━━━━━━━━━━━
 
-${narrativeBible.symbolicElements
+${narrativeBible.symbolicObjects
                 .slice(0, 8)
                 .map(item => `- ${item}`)
                 .join("\n")}
@@ -133,7 +133,7 @@ ${narrativeBible.symbolicElements
 THEMES
 ━━━━━━━━━━━━━━━━━━━
 
-${narrativeBible.recurringThemes
+${narrativeBible.thematicCore
                 .map(item => `- ${item}`)
                 .join("\n")}
 

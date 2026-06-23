@@ -168,7 +168,10 @@ ${title}
 
                 title,
 
-                subtitle
+                subtitle,
+
+                narrativeBible:
+                    book.narrativeBible
 
             })
 
@@ -181,45 +184,25 @@ ${title}
         const html =
             renderBook({
 
+
                 title:
                     book.title,
 
                 subtitle:
                     book.subtitle,
 
-                genre:
-                    book.genre,
+                author:
+                    book.author,
 
-                atmosphere,
-
-                emotionalCore,
-
-                language,
-
-                author: {
-
-                    name:
-                        book.author
-
-                },
+                synopsis:
+                    book.outline.introduction,
 
                 cover,
 
-                introduction:
-                    book.outline.introduction,
+                chapters: [
 
-                chapters:
-                    book.chapters.map(
-
-                        (
-
-                            chapter,
-                            index
-
-                        ) => ({
-
-                            number:
-                                index + 1,
+                    ...book.chapters.map(
+                        chapter => ({
 
                             title:
                                 chapter.title,
@@ -228,13 +211,23 @@ ${title}
                                 chapter.content
 
                         })
-
                     ),
 
-                conclusion:
-                    book.outline.ending
+                    {
+
+                        title:
+                            "Conclusão",
+
+                        content:
+                            book.outline.ending
+
+                    }
+
+                ]
 
             })
+
+
 
         /*
         ━━━━━━━━━━━━━━━━━━━
