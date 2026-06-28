@@ -1,4 +1,3 @@
-```ts
 /*
 ━━━━━━━━━━━━━━━━━━━
 EXPORT DOCX
@@ -20,11 +19,7 @@ import {
 
 } from "docx"
 
-import type {
-
-    GeneratedBook
-
-} from "@/lib/books/types"
+import type { GeneratedBook } from "@/lib/types/book"
 
 function sanitizeFileName(
 
@@ -118,7 +113,7 @@ export async function exportDocx(
             children: [
 
                 new TextRun({
-                    text: `by ${ book.author.name } `
+                    text: `by ${book.author.name} `
                 })
 
             ]
@@ -185,7 +180,7 @@ export async function exportDocx(
                     new TextRun({
 
                         text:
-                            `Chapter ${ chapter.number } `,
+                            `Chapter ${chapter.number} `,
 
                         bold: true
 
@@ -343,7 +338,7 @@ export async function exportDocx(
     */
 
     const fileName =
-        `${ sanitizeFileName(book.title) }.docx`
+        `${sanitizeFileName(book.title)}.docx`
 
     const filePath =
         path.join(
@@ -374,4 +369,4 @@ export async function exportDocx(
     return filePath
 
 }
-```
+

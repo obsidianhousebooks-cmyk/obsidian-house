@@ -4,18 +4,6 @@ KDP CATEGORIES ENGINE
 ━━━━━━━━━━━━━━━━━━━
 */
 
-import {
-
-    narrativeBible
-
-} from "@/lib/editorial/narrativeBible"
-
-import {
-
-    marketPositioning
-
-} from "./marketPositioning"
-
 /*
 ━━━━━━━━━━━━━━━━━━━
 TYPES

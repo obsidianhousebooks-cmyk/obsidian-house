@@ -1,4 +1,3 @@
-```ts
 /*
 ━━━━━━━━━━━━━━━━━━━
 EXPORT TXT
@@ -14,7 +13,7 @@ import type {
 
     GeneratedBook
 
-} from "@/lib/books/types"
+} from "@/lib/types/book"
 
 function sanitizeFileName(
 
@@ -60,22 +59,21 @@ export async function exportTxt(
 
     const content = `
 
-${ book.title }
+${book.title}
 
-${ book.subtitle || "" }
+${book.subtitle || ""}
 
-by ${ book.author.name }
+by ${book.author.name}
 
 ━━━━━━━━━━━━━━━━━━━
 
 INTRODUCTION
 
-${ book.introduction }
+${book.introduction}
 
 ━━━━━━━━━━━━━━━━━━━
 
-${
-    book.chapters.map(chapter => `
+${book.chapters.map(chapter => `
 
 CHAPTER ${chapter.number}
 
@@ -84,13 +82,13 @@ ${chapter.title}
 ${chapter.content}
 
 `).join("\n\n")
-}
+        }
 
 ━━━━━━━━━━━━━━━━━━━
 
 CONCLUSION
 
-${ book.conclusion }
+${book.conclusion}
 
 `
 
@@ -101,7 +99,7 @@ ${ book.conclusion }
     */
 
     const fileName =
-        `${ sanitizeFileName(book.title) }.txt`
+        `${sanitizeFileName(book.title)}.txt`
 
     const filePath =
         path.join(
@@ -134,4 +132,4 @@ ${ book.conclusion }
     return filePath
 
 }
-```
+

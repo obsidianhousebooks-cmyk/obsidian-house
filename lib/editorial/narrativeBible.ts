@@ -279,7 +279,7 @@ export function createNarrativeBible(
 
         targetAudience: [
 
-            ...input.author.audienceProfile
+            ...(input.author.audienceProfile ?? [])
 
         ],
 
@@ -302,13 +302,13 @@ export function createNarrativeBible(
             input.emotionalCore,
 
         psychologicalTension:
-            input.author.tensionStyle.join(", "),
+            (input.author.tensionStyle ?? []).join(", "),
 
         thematicCore: [
 
-            ...input.author.emotionalObsession,
+            ...(input.author.emotionalObsession ?? []),
 
-            ...input.author.humanPhilosophy
+            ...(input.author.humanPhilosophy ?? [])
 
         ],
 
@@ -382,25 +382,25 @@ export function createNarrativeBible(
 
             emotional: [
 
-                ...input.author.retentionStyle
+                ...(input.author.retentionStyle ?? [])
 
             ],
 
             visual: [
 
-                ...input.author.recurringImagery
+                ...(input.author.recurringImagery ?? [])
 
             ],
 
             sensory: [
 
-                ...input.author.sensoryWorld
+                ...(input.author.sensoryWorld ?? [])
 
             ],
 
             environmental: [
 
-                ...input.author.environmentStyle
+                ...(input.author.environmentStyle ?? [])
 
             ]
 
@@ -408,19 +408,19 @@ export function createNarrativeBible(
 
         recurringSymbols: [
 
-            ...input.author.recurringImagery
+            ...(input.author.recurringImagery ?? [])
 
         ],
 
         recurringMotifs: [
 
-            ...input.author.emotionalObsession
+            ...(input.author.emotionalObsession ?? [])
 
         ],
 
         symbolicObjects: [
 
-            ...input.author.symbolicObjects
+            ...(input.author.symbolicObjects ?? [])
 
         ],
 
@@ -436,13 +436,13 @@ export function createNarrativeBible(
                 "Undefined",
 
             wound:
-                input.author.coreWound,
+                input.author.coreWound ?? "",
 
             desire:
-                input.author.desires[0],
+                input.author.desires?.[0] ?? "",
 
             fear:
-                input.author.fears[0],
+                input.author.fears?.[0] ?? "",
 
             contradiction:
                 "wants intimacy but fears vulnerability",
@@ -454,13 +454,13 @@ export function createNarrativeBible(
 
         relationshipDynamics: [
 
-            ...input.author.relationshipPatterns
+            ...(input.author.relationshipPatterns ?? [])
 
         ],
 
         psychologicalDynamics: [
 
-            ...input.author.psychologicalTraits
+            ...(input.author.psychologicalTraits ?? [])
 
         ],
 
@@ -474,31 +474,31 @@ export function createNarrativeBible(
 
             tensionType: [
 
-                ...input.author.tensionStyle
+                ...(input.author.tensionStyle ?? [])
 
             ],
 
             suspenseMethod: [
 
-                ...input.author.readerHooks
+                ...(input.author.readerHooks ?? [])
 
             ],
 
             revealStrategy: [
 
-                ...input.author.revealStrategy
+                ...(input.author.revealStrategy ?? [])
 
             ],
 
             pacingStyle: [
 
-                ...input.author.pacingStyle
+                ...(input.author.pacingStyle ?? [])
 
             ],
 
             chapterMomentum: [
 
-                ...input.author.chapterEndings
+                ...(input.author.chapterEndings ?? [])
 
             ]
 
@@ -514,19 +514,19 @@ export function createNarrativeBible(
 
             hooks: [
 
-                ...input.author.readerHooks
+                ...(input.author.readerHooks ?? [])
 
             ],
 
             emotionalHooks: [
 
-                ...input.author.emotionalObsession
+                ...(input.author.emotionalObsession ?? [])
 
             ],
 
             cliffhangerStyle: [
 
-                ...input.author.chapterEndings
+                ...(input.author.chapterEndings ?? [])
 
             ],
 
@@ -544,7 +544,7 @@ export function createNarrativeBible(
 
             retentionStyle: [
 
-                ...input.author.retentionStyle
+                ...(input.author.retentionStyle ?? [])
 
             ]
 
@@ -582,13 +582,13 @@ export function createNarrativeBible(
 
             marketCategory: [
 
-                ...input.author.bestGenres
+                ...(input.author.bestGenres ?? [])
 
             ],
 
             comparableTitles: [
 
-                ...input.author.inspirations
+                ...(input.author.inspirations ?? [])
 
             ],
 

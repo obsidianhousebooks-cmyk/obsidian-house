@@ -12,12 +12,15 @@ import {
     audioLibrary
 } from "./audioLibrary"
 
+type AudioTrack =
+    keyof typeof audioLibrary
+
 interface AmbientAudioContextType {
 
-    currentTrack: string
+    currentTrack: AudioTrack
 
     playTrack: (
-        trackId: string
+        trackId: AudioTrack
     ) => void
 
     stopTrack: () => void
@@ -46,7 +49,7 @@ export function AmbientAudioProvider({
         useRef<NodeJS.Timeout | null>(null)
 
     const [currentTrack, setCurrentTrack] =
-        useState("silence")
+        useState<AudioTrack>("silence")
 
     const [isPlaying, setIsPlaying] =
         useState(false)
@@ -249,7 +252,7 @@ export function AmbientAudioProvider({
     */
 
     function playTrack(
-        trackId: string
+        trackId: AudioTrack
     ) {
 
         if (

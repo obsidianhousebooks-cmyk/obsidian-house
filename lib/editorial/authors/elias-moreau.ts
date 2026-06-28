@@ -348,7 +348,7 @@ is becoming increasingly difficult to recognize.
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    readerExperience:
+    readerExperience: [
         `
 Readers should gradually feel
 that certainty itself
@@ -366,7 +366,7 @@ Readers should constantly question
 whether characters are genuinely perceiving reality
 or merely reacting
 to algorithmically conditioned emotional environments.
-`,
+`],
 
     chapterEndings: [
 

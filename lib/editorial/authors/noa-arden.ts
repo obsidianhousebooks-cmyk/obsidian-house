@@ -346,7 +346,7 @@ They simply become less emotionally present over time.
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    readerExperience:
+    readerExperience: [
         `
 Readers should gradually feel
 that emotional presence
@@ -362,7 +362,7 @@ while internally disconnecting from experience itself.
 
 Readers should feel emotionally observed,
 not emotionally manipulated.
-`,
+`],
 
     chapterEndings: [
 

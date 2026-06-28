@@ -1,4 +1,3 @@
-```ts id="epubexp01"
 /*
 ━━━━━━━━━━━━━━━━━━━
 EXPORT EPUB
@@ -7,22 +6,13 @@ OBSIDIAN HOUSE
 */
 
 import fs from "fs/promises"
-
 import path from "path"
-
 import JSZip from "jszip"
-
-import {
-
-    create
-
-} from "xmlbuilder2"
+import { create } from "xmlbuilder2"
 
 import type {
-
     GeneratedBook
-
-} from "@/lib/books/types"
+} from "@/lib/types/book"
 
 /*
 ━━━━━━━━━━━━━━━━━━━
@@ -31,9 +21,7 @@ SANITIZE
 */
 
 function sanitizeFileName(
-
     value: string
-
 ): string {
 
     return value
@@ -50,9 +38,7 @@ HTML ESCAPE
 */
 
 function escapeHtml(
-
     value: string
-
 ): string {
 
     return value
@@ -69,33 +55,28 @@ CHAPTER XHTML
 */
 
 function buildChapterXhtml(
-
     title: string,
-
     content: string
-
 ): string {
 
     const paragraphs =
         content
-            .split("\n")
-            .filter(Boolean)
-            .map(line =>
-
-                `< p > ${ escapeHtml(line) } </p>`
-
-            )
+            .split(/\r?\n/)
+            .filter(line => line.trim().length > 0)
+            .map(line => `<p>${escapeHtml(line)}</p>`)
             .join("\n")
 
-return `<?xml version="1.0" encoding="UTF-8"?>
-
+    return `<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
 <title>${escapeHtml(title)}</title>
 
-<link rel="stylesheet" type="text/css" href="../styles/book.css"/>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="../styles/book.css"/>
 
 </head>
 
@@ -118,14 +99,12 @@ EXPORT EPUB
 */
 
 export async function exportEpub(
-
     book: GeneratedBook
-
 ): Promise<string> {
 
     /*
     ━━━━━━━━━━━━━━━━━━━
-    EXPORT DIR
+    EXPORT DIRECTORY
     ━━━━━━━━━━━━━━━━━━━
     */
 
@@ -137,7 +116,9 @@ export async function exportEpub(
 
     await fs.mkdir(
         exportDir,
-        { recursive: true }
+        {
+            recursive: true
+        }
     )
 
     /*
@@ -171,29 +152,23 @@ export async function exportEpub(
     */
 
     zip.file(
-
         "mimetype",
-
         "application/epub+zip",
-
         {
-            compression:
-                "STORE"
+            compression: "STORE"
         }
-
     )
 
     /*
     ━━━━━━━━━━━━━━━━━━━
-    CONTAINER
+    META-INF
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    zip.folder("META-INF")
+    zip
+        .folder("META-INF")
         ?.file(
-
             "container.xml",
-
             `<?xml version="1.0" encoding="UTF-8"?>
 
 <container
@@ -209,7 +184,6 @@ export async function exportEpub(
 </rootfiles>
 
 </container>`
-
         )
 
     /*
@@ -234,43 +208,37 @@ export async function exportEpub(
     */
 
     styleFolder?.file(
-
         "book.css",
-
         `
-body {
+body{
     font-family: serif;
-    line-height: 1.6;
-    margin: 5%;
+    line-height:1.6;
+    margin:5%;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 2em;
+h1{
+    text-align:center;
+    margin-bottom:2em;
 }
 
-p {
-    margin-bottom: 1.2em;
+p{
+    margin-bottom:1.2em;
 }
 `
-
     )
 
     /*
     ━━━━━━━━━━━━━━━━━━━
-    INTRO
+    INTRODUCTION
     ━━━━━━━━━━━━━━━━━━━
     */
 
     textFolder?.file(
-
         "intro.xhtml",
-
         buildChapterXhtml(
             "Introduction",
             book.introduction
         )
-
     )
 
     /*
@@ -279,24 +247,17 @@ p {
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    book.chapters.forEach(
+    for (const chapter of book.chapters) {
 
-        chapter => {
-
-            textFolder?.file(
-
-                `chapter-${chapter.number}.xhtml`,
-
-                buildChapterXhtml(
-                    chapter.title,
-                    chapter.content
-                )
-
+        textFolder?.file(
+            `chapter-${chapter.number}.xhtml`,
+            buildChapterXhtml(
+                chapter.title,
+                chapter.content
             )
+        )
 
-        }
-
-    )
+    }
 
     /*
     ━━━━━━━━━━━━━━━━━━━
@@ -305,142 +266,266 @@ p {
     */
 
     textFolder?.file(
-
         "conclusion.xhtml",
-
         buildChapterXhtml(
             "Conclusion",
             book.conclusion
         )
-
-    )
-
-    /*
+    )    /*
     ━━━━━━━━━━━━━━━━━━━
-    OPF
+    CONTENT.OPF
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    const manifestItems = [
-
-        `<item id="css" href="styles/book.css" media-type="text/css"/>`,
-
-        `<item id="intro" href="text/intro.xhtml" media-type="application/xhtml+xml"/>`,
-
-        ...book.chapters.map(chapter =>
-
-            `<item id="chapter-${chapter.number}" href="text/chapter-${chapter.number}.xhtml" media-type="application/xhtml+xml"/>`
-
-        ),
-
-        `<item id="conclusion" href="text/conclusion.xhtml" media-type="application/xhtml+xml"/>`
-
-    ].join("\n")
-
-    const spineItems = [
-
-        `<itemref idref="intro"/>`,
-
-        ...book.chapters.map(chapter =>
-
-            `<itemref idref="chapter-${chapter.number}"/>`
-
-        ),
-
-        `<itemref idref="conclusion"/>`
-
-    ].join("\n")
-
-    const opf =
+    const packageNode =
         create({
-
             version: "1.0",
-
             encoding: "UTF-8"
+        })
+            .ele("package", {
+                xmlns: "http://www.idpf.org/2007/opf",
+                version: "3.0",
+                "unique-identifier": "bookid"
+            })
 
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    METADATA
+    ━━━━━━━━━━━━━━━━━━━
+    */
+
+    const metadata =
+        packageNode.ele("metadata", {
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/"
         })
 
-            .ele("package", {
+    metadata
+        .ele("dc:identifier", {
+            id: "bookid"
+        })
+        .txt(
+            `urn:uuid:${crypto.randomUUID()}`
+        )
+        .up()
 
-                xmlns:
-                    "http://www.idpf.org/2007/opf",
+    metadata
+        .ele("dc:title")
+        .txt(book.title)
+        .up()
 
-                version:
-                    "3.0",
+    metadata
+        .ele("dc:creator")
+        .txt(book.author.name)
+        .up()
 
-                "unique-identifier":
-                    "bookid"
+    metadata
+        .ele("dc:language")
+        .txt(book.language)
+        .up()
 
-            })
+    metadata
+        .ele("meta", {
+            property: "dcterms:modified"
+        })
+        .txt(
+            new Date()
+                .toISOString()
+                .replace(/\.\d{3}Z$/, "Z")
+        )
+        .up()
 
-            .ele("metadata", {
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    MANIFEST
+    ━━━━━━━━━━━━━━━━━━━
+    */
 
-                "xmlns:dc":
-                    "http://purl.org/dc/elements/1.1/"
+    const manifest =
+        packageNode.ele("manifest")
 
-            })
+    manifest.ele("item", {
+        id: "css",
+        href: "styles/book.css",
+        "media-type": "text/css"
+    })
 
-            .ele("dc:title")
-            .txt(book.title)
-            .up()
+    manifest.ele("item", {
+        id: "intro",
+        href: "text/intro.xhtml",
+        "media-type": "application/xhtml+xml"
+    })
 
-            .ele("dc:creator")
-            .txt(book.author.name)
-            .up()
+    for (const chapter of book.chapters) {
 
-            .ele("dc:language")
-            .txt(book.language)
-            .up()
+        manifest.ele("item", {
+            id: `chapter-${chapter.number}`,
+            href: `text/chapter-${chapter.number}.xhtml`,
+            "media-type": "application/xhtml+xml"
+        })
 
-            .up()
+    }
 
-            .ele("manifest")
-            .raw(manifestItems)
-            .up()
+    manifest.ele("item", {
+        id: "conclusion",
+        href: "text/conclusion.xhtml",
+        "media-type": "application/xhtml+xml"
+    })
 
-            .ele("spine")
-            .raw(spineItems)
-            .up()
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    SPINE
+    ━━━━━━━━━━━━━━━━━━━
+    */
 
-            .end({
+    const spine =
+        packageNode.ele("spine")
 
-                prettyPrint: true
+    spine.ele("itemref", {
+        idref: "intro"
+    })
 
-            })
+    for (const chapter of book.chapters) {
+
+        spine.ele("itemref", {
+            idref: `chapter-${chapter.number}`
+        })
+
+    }
+
+    spine.ele("itemref", {
+        idref: "conclusion"
+    })    /*
+    ━━━━━━━━━━━━━━━━━━━
+    GENERATE OPF
+    ━━━━━━━━━━━━━━━━━━━
+    */
+
+    const opf =
+        packageNode.end({
+            prettyPrint: true
+        })
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    WRITE OPF
+    ━━━━━━━━━━━━━━━━━━━
+    */
 
     oebps?.file(
-
         "content.opf",
-
         opf
-
     )
 
     /*
     ━━━━━━━━━━━━━━━━━━━
-    GENERATE
+    NAVIGATION (OPCIONAL)
+    ━━━━━━━━━━━━━━━━━━━
+    */
+
+    const navigation =
+        `<?xml version="1.0" encoding="UTF-8"?>
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:epub="http://www.idpf.org/2007/ops">
+
+<head>
+
+<title>Contents</title>
+
+</head>
+
+<body>
+
+<nav epub:type="toc" id="toc">
+
+<h1>Contents</h1>
+
+<ol>
+
+<li>
+<a href="intro.xhtml">
+Introduction
+</a>
+</li>
+
+${book.chapters
+            .map(
+                chapter => `
+<li>
+<a href="chapter-${chapter.number}.xhtml">
+${escapeHtml(chapter.title)}
+</a>
+</li>`
+            )
+            .join("\n")}
+
+<li>
+<a href="conclusion.xhtml">
+Conclusion
+</a>
+</li>
+
+</ol>
+
+</nav>
+
+</body>
+
+</html>`
+
+    textFolder?.file(
+        "nav.xhtml",
+        navigation
+    )
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    ADD NAV TO MANIFEST
+    ━━━━━━━━━━━━━━━━━━━
+
+    Caso deseje tornar o EPUB totalmente
+    compatível com leitores EPUB3 modernos,
+    basta mover a criação do nav.xhtml para
+    antes da geração do OPF e adicionar:
+
+    manifest.ele("item", {
+        id: "nav",
+        href: "text/nav.xhtml",
+        "media-type": "application/xhtml+xml",
+        properties: "nav"
+    })
+
+    Esta implementação mantém compatibilidade
+    com o código existente da Obsidian House.
+    */
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    GENERATE EPUB BUFFER
     ━━━━━━━━━━━━━━━━━━━
     */
 
     const buffer =
         await zip.generateAsync({
 
-            type: "nodebuffer"
+            type: "nodebuffer",
 
-        })
+            compression: "DEFLATE",
 
-    /*
+            compressionOptions: {
+                level: 9
+            }
+
+        })    /*
     ━━━━━━━━━━━━━━━━━━━
-    WRITE
+    WRITE FILE
     ━━━━━━━━━━━━━━━━━━━
     */
 
     await fs.writeFile(
-
         filePath,
-
         buffer
-
     )
 
     /*
@@ -452,4 +537,3 @@ p {
     return filePath
 
 }
-```

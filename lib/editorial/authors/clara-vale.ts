@@ -347,7 +347,7 @@ but not correctly.
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    readerExperience:
+    readerExperience: [
         `
 Readers should constantly feel
 that intimacy is fragile,
@@ -362,7 +362,7 @@ and the fear that two people
 may genuinely love each other
 while remaining fundamentally incapable
 of sustaining healthy intimacy.
-`,
+`],
 
     chapterEndings: [
 

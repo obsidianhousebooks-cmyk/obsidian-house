@@ -1,40 +1,14 @@
-/*
-━━━━━━━━━━━━━━━━━━━
-EDITORIAL ORCHESTRATOR
-━━━━━━━━━━━━━━━━━━━
-
-Central operational pipeline
-for Obsidian House.
-
-Focused on:
-
-- book generation
-- publishing preparation
-- export orchestration
-
-Clean architecture.
-No artificial scoring systems.
-No abandoned editorial abstractions.
-
-━━━━━━━━━━━━━━━━━━━
-*/
-
 import {
-
     generateBook
-
 } from "@/lib/ai/generateBook"
 
 import {
-
-    publishingPipeline
-
+    publishingPipeline,
+    PublishingPipelineResult
 } from "@/lib/publishing/publishingPipeline"
 
 import {
-
     exportMarkdown
-
 } from "@/lib/export/exportMarkdown"
 
 /*
@@ -44,6 +18,7 @@ INPUT
 */
 
 export interface EditorialOrchestratorInput {
+
 
     title: string
 
@@ -67,6 +42,7 @@ export interface EditorialOrchestratorInput {
 
     emotionalCore?: string
 
+
 }
 
 /*
@@ -76,6 +52,7 @@ RESULT
 */
 
 export interface EditorialOrchestratorResult {
+
 
     success: boolean
 
@@ -91,37 +68,7 @@ export interface EditorialOrchestratorResult {
 
     }
 
-    publishing?: {
-
-        metadata: {
-
-            title: string
-
-            subtitle?: string
-
-            description: string
-
-            language: string
-
-        }
-
-        seo: {
-
-            longTailKeywords: string[]
-
-        }
-
-        kdp: {
-
-            primaryCategories: any[]
-
-            lowCompetitionCategories: any[]
-
-            premiumCategories: any[]
-
-        }
-
-    }
+    publishing?: PublishingPipelineResult
 
     export?: {
 
@@ -133,6 +80,7 @@ export interface EditorialOrchestratorResult {
 
     error?: string
 
+
 }
 
 /*
@@ -143,17 +91,14 @@ ORCHESTRATOR
 
 export async function editorialOrchestrator(
 
+
     input: EditorialOrchestratorInput
+
 
 ): Promise<EditorialOrchestratorResult> {
 
-    try {
 
-        /*
-        ━━━━━━━━━━━━━━━━━━━
-        BOOK
-        ━━━━━━━━━━━━━━━━━━━
-        */
+    try {
 
         const book =
             await generateBook({
@@ -205,10 +150,8 @@ export async function editorialOrchestrator(
                 book.chapters.reduce(
 
                     (
-
                         total,
                         chapter
-
                     ) =>
 
                         total +
@@ -219,9 +162,64 @@ export async function editorialOrchestrator(
 
                     0
 
-                ) / book.chapters.length
+                ) /
+
+                Math.max(
+                    book.chapters.length,
+                    1
+                )
 
             )
+
+        /*
+        ━━━━━━━━━━━━━━━━━━━
+        ADAPT BOOK
+        ━━━━━━━━━━━━━━━━━━━
+        */
+
+        const publishingBook = {
+
+            title:
+                book.title,
+
+            subtitle:
+                book.subtitle,
+
+            genre:
+                book.genre,
+
+            atmosphere:
+                input.atmosphere || "Literary Fiction",
+
+            emotionalCore:
+                input.emotionalCore || "Human Vulnerability",
+
+            language:
+                input.language || "English",
+
+            author: {
+
+                id:
+                    "editorial-author",
+
+                name:
+                    book.author
+
+            },
+
+            averageScore:
+                literaryScore,
+
+            introduction:
+                "",
+
+            chapters:
+                book.chapters,
+
+            conclusion:
+                ""
+
+        }
 
         /*
         ━━━━━━━━━━━━━━━━━━━
@@ -232,20 +230,8 @@ export async function editorialOrchestrator(
         const publishing =
             await publishingPipeline({
 
-                title:
-                    book.title,
-
-                subtitle:
-                    input.subtitle || "",
-
-                description:
-                    book.fullText.slice(0, 4000),
-
-                genre:
-                    input.genre,
-
-                language:
-                    input.language || "English"
+                book:
+                    publishingBook as any
 
             })
 
@@ -256,24 +242,9 @@ export async function editorialOrchestrator(
         */
 
         const exported =
-            await exportMarkdown({
-
-                title:
-                    book.title,
-
-                author:
-                    book.author,
-
-                content:
-                    book.fullText
-
-            })
-
-        /*
-        ━━━━━━━━━━━━━━━━━━━
-        RETURN
-        ━━━━━━━━━━━━━━━━━━━
-        */
+            await exportMarkdown(
+                book as any
+            )
 
         return {
 
@@ -299,10 +270,12 @@ export async function editorialOrchestrator(
             export: {
 
                 downloadUrl:
-                    exported.downloadUrl,
+                    exported,
 
                 fileName:
-                    exported.fileName
+                    exported
+                        .split(/[\\/]/)
+                        .pop() || exported
 
             }
 
@@ -313,11 +286,14 @@ export async function editorialOrchestrator(
         console.error(
 
             `
+        
+
 ━━━━━━━━━━━━━━━━━━━
 EDITORIAL ORCHESTRATOR ERROR
 ━━━━━━━━━━━━━━━━━━━
 `,
             error
+
 
         )
 
@@ -326,10 +302,13 @@ EDITORIAL ORCHESTRATOR ERROR
             success: false,
 
             error:
-                "Failed to orchestrate editorial pipeline."
+                error instanceof Error
+                    ? error.message
+                    : "Failed to orchestrate editorial pipeline."
 
         }
 
     }
+
 
 }

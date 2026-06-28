@@ -6,9 +6,9 @@ import {
 
 } from "@/lib/editorial/editorialIdentity"
 
-import {
+import type {
 
-    narrativeBible
+    NarrativeBible
 
 } from "@/lib/editorial/narrativeBible"
 
@@ -94,8 +94,8 @@ EDITORIAL IDENTITY
 Nome:
 ${editorialIdentity.name}
 
-Estilo:
-${editorialIdentity.style}
+Missão:
+${editorialIdentity.mission}
 
 Posicionamento:
 ${editorialIdentity.positioning}
@@ -105,19 +105,11 @@ NARRATIVE DNA
 ━━━━━━━━━━━━━━━━━━━
 
 Gênero:
-${narrativeBible.genre}
+${genre}
 
-Tom:
+Núcleo Emocional:
 
-${narrativeBible.tone
-            .map(item => `- ${item}`)
-            .join("\n")}
-
-Temas:
-
-${narrativeBible.recurringThemes
-            .map(item => `- ${item}`)
-            .join("\n")}
+${emotionalCore}
 
 ━━━━━━━━━━━━━━━━━━━
 OBJETIVO

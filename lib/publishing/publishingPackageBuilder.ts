@@ -6,11 +6,7 @@ import {
 
 } from "@/lib/editorial/editorialIdentity"
 
-import {
 
-    narrativeBible
-
-} from "@/lib/editorial/narrativeBible"
 
 /*
 ━━━━━━━━━━━━━━━━━━━
@@ -73,28 +69,35 @@ EDITORIAL IDENTITY
 Nome:
 ${editorialIdentity.name}
 
-Estilo:
-${editorialIdentity.style}
+Filosofia Editorial:
+
+${editorialIdentity.philosophy
+            .map(item => `- ${item}`)
+            .join("\n")}
 
 Posicionamento:
 ${editorialIdentity.positioning}
 
 ━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━
 NARRATIVE DNA
 ━━━━━━━━━━━━━━━━━━━
 
-Gênero:
-${narrativeBible.genre}
+Valores Narrativos:
 
-Tom:
-
-${narrativeBible.tone
+${editorialIdentity.narrativeValues
             .map(item => `- ${item}`)
             .join("\n")}
 
-Temas:
+Experiência Emocional:
 
-${narrativeBible.recurringThemes
+${editorialIdentity.emotionalExperience
+            .map(item => `- ${item}`)
+            .join("\n")}
+
+Atmosfera:
+
+${editorialIdentity.atmosphere
             .map(item => `- ${item}`)
             .join("\n")}
 

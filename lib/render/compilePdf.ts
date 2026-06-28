@@ -318,25 +318,11 @@ PDF COMPILATION START
     */
 
     await page.setContent(
-
         html,
-
         {
-
-            waitUntil: [
-
-                "load",
-
-                "domcontentloaded",
-
-                "networkidle0"
-
-            ]
-
+            waitUntil: "load"
         }
-
     )
-
     /*
     ━━━━━━━━━━━━━━━━━━━
     WAIT FONTS

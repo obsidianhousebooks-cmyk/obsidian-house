@@ -182,7 +182,7 @@ ${author.voice}
 
 Narrative principles:
 
-${author.narrativePrinciples.join("\n")}
+${(author.narrativePrinciples ?? []).join("\n")}
 
 CHAPTER:
 

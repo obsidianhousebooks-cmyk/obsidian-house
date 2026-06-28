@@ -34,7 +34,7 @@ export default function PageAudio() {
         ) {
 
             playTrack(
-                "obsidianAmbient"
+                "obsidian"
             )
 
             return
@@ -74,7 +74,7 @@ export default function PageAudio() {
         ) {
 
             playTrack(
-                "obsidianAmbient"
+                "obsidian"
             )
 
             return

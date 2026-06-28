@@ -236,11 +236,11 @@ ${author.name}
 
 VOICE
 
-${author.voice}
+${author.voice ?? ""}
 
 NARRATIVE PRINCIPLES
 
-${author.narrativePrinciples.join("\n")}
+${(author.narrativePrinciples ?? []).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━
 CHAPTER

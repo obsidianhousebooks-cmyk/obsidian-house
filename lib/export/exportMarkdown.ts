@@ -1,4 +1,3 @@
-```ts
 /*
 ━━━━━━━━━━━━━━━━━━━
 EXPORT MARKDOWN
@@ -14,7 +13,7 @@ import type {
 
     GeneratedBook
 
-} from "@/lib/books/types"
+} from "@/lib/ai/generateBook"
 
 function sanitizeFileName(
 
@@ -60,37 +59,15 @@ export async function exportMarkdown(
 
     const content = `
 
-# ${ book.title }
+# ${book.title}
 
-${ book.subtitle || "" }
+${book.subtitle || ""}
 
-by ** ${ book.author.name }**
-
-    ---
-
-# Introduction
-
-${ book.introduction }
+by **${book.author}**
 
 ---
 
-    ${
-        book.chapters.map(chapter => `
-
-# Chapter ${chapter.number}
-
-## ${chapter.title}
-
-${chapter.content}
-
-`).join("\n\n")
-}
-
----
-
-# Conclusion
-
-${ book.conclusion }
+${book.fullText}
 
 `
 
@@ -101,7 +78,7 @@ ${ book.conclusion }
     */
 
     const fileName =
-        `${ sanitizeFileName(book.title) }.md`
+        `${sanitizeFileName(book.title)}.md`
 
     const filePath =
         path.join(
@@ -134,4 +111,4 @@ ${ book.conclusion }
     return filePath
 
 }
-```
+

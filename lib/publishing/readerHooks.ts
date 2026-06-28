@@ -4,9 +4,9 @@ HOOKS ENGINE
 ━━━━━━━━━━━━━━━━━━━
 */
 
-import {
+import type {
 
-    narrativeBible
+    NarrativeBible
 
 } from "@/lib/editorial/narrativeBible"
 

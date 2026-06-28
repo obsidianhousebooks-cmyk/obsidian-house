@@ -10,7 +10,13 @@ import type {
     EditorialAuthor
 
 } from "@/lib/editorial/authors/types"
-
+export interface ChapterScene {
+    scene: number
+    title: string
+    location: string
+    pov: string
+    text: string
+}
 /*
 ━━━━━━━━━━━━━━━━━━━
 CHAPTER

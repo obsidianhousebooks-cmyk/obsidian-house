@@ -6,23 +6,13 @@ METADATA SCORING ENGINE
 
 import {
 
-    seoEngine,
-
     calculateSEOScore
 
 } from "./seoEngine"
 
-import {
 
-    marketPositioning
 
-} from "./marketPositioning"
 
-import {
-
-    hooksEngine
-
-} from "./hooks"
 
 /*
 ━━━━━━━━━━━━━━━━━━━

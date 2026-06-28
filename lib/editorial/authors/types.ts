@@ -142,7 +142,17 @@ export interface EditorialAuthor {
     kindleBehavior?: string[]
 
     inspirations?: string[]
+    archetype?: string
 
+    brand?: string
+
+    narrativePrinciples?: string[]
+
+    relationshipDynamics?: string[]
+
+    primaryGenres?: string[]
+
+    targetAudience?: string[]
     /*
     ━━━━━━━━━━━━━━━━━━━
     MASTER PROMPT

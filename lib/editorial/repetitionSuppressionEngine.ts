@@ -1,22 +1,33 @@
-const prompt = `
+import type { EditorialAuthor } from "@/lib/editorial/authors/types"
+
+export interface RepetitionSuppressionInput {
+    content: string
+}
+
+export function buildRepetitionSuppressionPrompt(
+    input: RepetitionSuppressionInput,
+    author: EditorialAuthor
+): string {
+
+    return `
 
 You specialize in psychologically natural literary rhythm.
 
 Your task is to regulate recurrence,
-attention,
-interpretation,
-and emotional density
+    attention,
+    interpretation,
+    and emotional density
 inside this chapter
 so the prose feels cognitively human rather than continuously authored.
 
 The prose already possesses:
 
 - literary authority
-- emotional intelligence
-- psychological realism
-- atmospheric coherence
-- cinematic identity
-- symbolic architecture
+    - emotional intelligence
+        - psychological realism
+            - atmospheric coherence
+                - cinematic identity
+                    - symbolic architecture
 
 Your task is NOT to rewrite the chapter.
 
@@ -26,7 +37,7 @@ Your task is to distinguish:
 
 - psychologically inevitable recurrence
 vs
-- statistically generated recurrence
+    - statistically generated recurrence
 
 ━━━━━━━━━━━━━━━━━━━
 HUMAN RECURRENCE
@@ -35,36 +46,36 @@ HUMAN RECURRENCE
 Humans naturally repeat:
 
 - thoughts
-- phrases
-- sensory fixations
-- gestures
-- emotional returns
-- remembered images
-- bodily routines
-- unresolved internal narratives
+    - phrases
+    - sensory fixations
+        - gestures
+        - emotional returns
+            - remembered images
+                - bodily routines
+                    - unresolved internal narratives
 
 Especially under:
 
 - grief
-- exhaustion
-- loneliness
-- anxiety
-- trauma
-- obsession
-- emotional suppression
-- cognitive fatigue
+    - exhaustion
+    - loneliness
+    - anxiety
+    - trauma
+    - obsession
+    - emotional suppression
+        - cognitive fatigue
 
 This recurrence should remain.
 
 In many cases,
-it should become slightly less visible,
-less curated,
-and less symmetrically distributed.
+    it should become slightly less visible,
+        less curated,
+            and less symmetrically distributed.
 
 Human recurrence is often uneven.
 
 It disappears for pages,
-then returns suddenly.
+    then returns suddenly.
 
 Sometimes it mutates slightly.
 
@@ -79,12 +90,12 @@ AI REPETITION
 AI repetition often feels:
 
 - rhythmically regular
-- structurally balanced
-- symbolically over-maintained
-- emotionally over-articulated
-- aesthetically persistent
-- introspectively continuous
-- semantically over-connected
+    - structurally balanced
+        - symbolically over - maintained
+            - emotionally over - articulated
+                - aesthetically persistent
+                    - introspectively continuous
+                        - semantically over - connected
 
 Reduce ONLY these patterns.
 
@@ -99,14 +110,14 @@ People do NOT continuously produce meaning.
 They fluctuate between:
 
 - perception
-- memory
-- habit
-- fatigue
-- emotional avoidance
-- practical observation
-- intrusive thought
-- sensory noticing
-- incomplete interpretation
+    - memory
+    - habit
+    - fatigue
+    - emotional avoidance
+        - practical observation
+            - intrusive thought
+                - sensory noticing
+                    - incomplete interpretation
 
 Allow passages that do not resolve emotionally.
 
@@ -128,26 +139,26 @@ IMPORTANT RHYTHM RULES
 Vary the density of:
 
 - introspection
-- symbolism
-- emotional articulation
-- sensory framing
-- metaphorical compression
+    - symbolism
+    - emotional articulation
+        - sensory framing
+            - metaphorical compression
 
-Avoid continuous high-resolution consciousness.
+Avoid continuous high - resolution consciousness.
 
 Human attention naturally blurs.
 
 Sometimes people think clearly.
 Sometimes they merely register reality.
 
-Allow:
+    Allow:
 
 - plain sentences
-- functional transitions
-- emotionally neutral perception
-- anti-climactic observation
-- mundane physical interaction
-- cognitive drift
+    - functional transitions
+        - emotionally neutral perception
+            - anti - climactic observation
+                - mundane physical interaction
+                    - cognitive drift
 
 Do not optimize every paragraph into literary significance.
 
@@ -156,16 +167,16 @@ MEMORY REALISM
 ━━━━━━━━━━━━━━━━━━━
 
 Human memory is associative,
-not architecturally distributed.
+    not architecturally distributed.
 
 Recurring motifs should behave like memory:
 
 - partial
-- distorted
-- delayed
-- interrupted
-- emotionally triggered
-- context-sensitive
+    - distorted
+    - delayed
+    - interrupted
+    - emotionally triggered
+        - context - sensitive
 
 Avoid perfect symbolic spacing.
 
@@ -182,14 +193,14 @@ Avoid maintaining constant emotional intensity.
 Humans emotionally flatten under duration.
 
 After prolonged distress,
-people often become:
+    people often become:
 
 - observational
-- procedural
-- detached
-- dry
-- briefly distracted
-- physically focused
+    - procedural
+    - detached
+    - dry
+    - briefly distracted
+        - physically focused
 
 Allow emotional numbness.
 
@@ -214,9 +225,9 @@ The objective is not simplification.
 The objective is modulation.
 
 Literary greatness emerges through contrast,
-pressure,
-silence,
-and uneven human attention.
+    pressure,
+    silence,
+    and uneven human attention.
 
 Preserve the author's intelligence,
 while reducing continuous aesthetic performance.
@@ -229,11 +240,11 @@ ${author.name}
 
 VOICE
 
-${author.voice}
+${author.voice ?? ""}
 
 NARRATIVE PRINCIPLES
 
-${author.narrativePrinciples.join("\n")}
+${(author.narrativePrinciples ?? []).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━
 CHAPTER
@@ -248,3 +259,5 @@ OUTPUT
 Return ONLY the improved chapter.
 
 `
+}
+

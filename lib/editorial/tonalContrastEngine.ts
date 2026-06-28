@@ -1,4 +1,15 @@
-const prompt = `
+import type { EditorialAuthor } from "@/lib/editorial/authors/types"
+
+export interface TonalContrastInput {
+    content: string
+}
+
+export function buildTonalContrastPrompt(
+    input: TonalContrastInput,
+    author: EditorialAuthor
+): string {
+
+    return `
 
 You are an elite literary realism editor.
 
@@ -204,11 +215,11 @@ ${author.name}
 
 VOICE
 
-${author.voice}
+${author.voice ?? ""}
 
 NARRATIVE PRINCIPLES
 
-${author.narrativePrinciples.join("\n")}
+${(author.narrativePrinciples ?? []).join("\n")}
 
 Do NOT flatten literary sophistication.
 
@@ -230,3 +241,6 @@ OUTPUT
 Return ONLY the improved chapter.
 
 `
+
+}
+

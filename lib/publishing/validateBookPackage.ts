@@ -1,4 +1,3 @@
-```ts id="validatepkg02"
 import fs from "fs/promises"
 
 /*
@@ -298,4 +297,4 @@ export async function validateBookPackage({
     }
 
 }
-```
+

@@ -133,8 +133,8 @@ export default async function AuthorPage({
                                 mb-12
                             "
                         >
-                            {author.marketPosition ||
-                                author.brand}
+                            {author.marketPosition}
+
                         </p>
 
                         <div
@@ -722,10 +722,7 @@ export default async function AuthorPage({
                                                 leading-relaxed
                                             "
                                         >
-                                            {
-                                                item.marketPosition ||
-                                                item.brand
-                                            }
+                                            {item.marketPosition}
                                         </p>
 
                                     </Link>

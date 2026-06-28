@@ -1,4 +1,3 @@
-```ts id="pdfrelease01"
 import fs from "fs/promises"
 
 import fsSync from "fs"
@@ -96,7 +95,7 @@ export async function renderPremiumPDF({
         )
 
     const fileName =
-        `${ safeTitle }.pdf`
+        `${safeTitle}.pdf`
 
     const exportDirectory =
         path.join(
@@ -231,7 +230,7 @@ export async function renderPremiumPDF({
 
         } catch (
 
-            error
+        error
 
         ) {
 
@@ -485,9 +484,9 @@ export async function renderPremiumPDF({
             ),
 
         downloadUrl:
-            `/ exports / ${ fileName } `
+            `/ exports / ${fileName} `
 
     }
 
 }
-```
+

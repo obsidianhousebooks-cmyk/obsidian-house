@@ -1,8 +1,5 @@
-```ts id="pubpipeline02"
 import {
-
-    generateCover
-
+    coverPipeline
 } from "@/lib/publishing/coverPipeline"
 
 import {
@@ -51,7 +48,7 @@ import type {
 
     GeneratedBook
 
-} from "@/lib/books/types"
+} from "@/lib/types/book"
 
 /*
 ━━━━━━━━━━━━━━━━━━━
@@ -141,14 +138,13 @@ export async function publishingPipeline({
         */
 
         const generatedCover =
-            await generateCover({
+            await coverPipeline({
 
                 title:
                     book.title,
 
                 subtitle:
-                    book.subtitle,
-
+                    book.subtitle ?? "",
                 genre:
                     book.genre,
 
@@ -156,7 +152,10 @@ export async function publishingPipeline({
                     book.atmosphere,
 
                 emotionalCore:
-                    book.emotionalCore
+                    book.emotionalCore,
+
+                language:
+                    "en"
 
             })
 
@@ -179,7 +178,7 @@ export async function publishingPipeline({
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -229,7 +228,7 @@ export async function publishingPipeline({
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -253,12 +252,12 @@ export async function publishingPipeline({
 
         markdown =
             await exportMarkdown(
-                book
+                book as any
             )
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -287,7 +286,7 @@ export async function publishingPipeline({
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -316,7 +315,7 @@ export async function publishingPipeline({
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -345,7 +344,7 @@ export async function publishingPipeline({
 
     } catch (
 
-        error
+    error
 
     ) {
 
@@ -431,4 +430,4 @@ export async function publishingPipeline({
     }
 
 }
-```
+

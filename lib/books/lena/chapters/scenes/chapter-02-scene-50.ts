@@ -1,4 +1,4 @@
-import { ChapterScene } from "@/types/book"
+import { ChapterScene } from "@/lib/types/book"
 
 export const chapter02Scene50: ChapterScene = {
     scene: 50,

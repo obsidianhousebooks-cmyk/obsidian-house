@@ -1,4 +1,15 @@
-const prompt = `
+import type { EditorialAuthor } from "@/lib/editorial/authors/types"
+
+export interface MemoryDistortionInput {
+    content: string
+}
+
+export function buildMemoryDistortionPrompt(
+    input: MemoryDistortionInput,
+    author: EditorialAuthor
+): string {
+
+    return `
 
 You are an elite psychological fiction editor.
 
@@ -72,7 +83,9 @@ Do NOT introduce confusion for its own sake.
 The reader should feel:
 
 - psychological instability
+
 without
+
 - narrative collapse
 
 ━━━━━━━━━━━━━━━━━━━
@@ -91,66 +104,6 @@ Subtle forms of:
 - contradictory emotional framing
 - retroactive meaning-making
 - emotionally biased perception
-
-Allow memories to behave unevenly.
-
-Sometimes vivid.
-Sometimes inaccessible.
-
-Sometimes emotionally precise
-but factually unreliable.
-
-Sometimes factually accurate
-but emotionally false.
-
-━━━━━━━━━━━━━━━━━━━
-MEMORY DISTORTION RULES
-━━━━━━━━━━━━━━━━━━━
-
-People often:
-
-- remember objects more vividly than conversations
-- confuse emotional cause and effect
-- soften their own cruelty
-- exaggerate abandonment
-- misremember tone
-- invent coherence afterward
-- unconsciously protect themselves
-- reinterpret the past according to present loneliness
-- alter memories to preserve identity
-- remember atmospheres instead of facts
-
-Allow subtle contradiction.
-
-Allow missing internal steps.
-
-Allow conclusions that emerge emotionally
-rather than logically.
-
-Do not always explain inconsistency.
-
-━━━━━━━━━━━━━━━━━━━
-IMPORTANT REALISM RULE
-━━━━━━━━━━━━━━━━━━━
-
-Avoid performative ambiguity.
-
-Humans rarely narrate memory failure elegantly.
-
-Avoid excessive use of:
-
-- "maybe"
-- "perhaps"
-- "he wasn't sure"
-- "memory blurred"
-- explicit uncertainty narration
-
-Instead,
-allow memory distortion
-to emerge implicitly.
-
-The narration itself should sometimes
-carry unnoticed distortion.
 
 ━━━━━━━━━━━━━━━━━━━
 BODY MEMORY
@@ -171,8 +124,6 @@ People remember:
 
 more vividly than meaning.
 
-Use sensory residue carefully.
-
 ━━━━━━━━━━━━━━━━━━━
 EMOTIONAL CONTAMINATION
 ━━━━━━━━━━━━━━━━━━━
@@ -187,30 +138,21 @@ Current resentment may edit tenderness out of memory.
 
 Current grief may romanticize pain.
 
-Allow the present self
-to unconsciously rewrite the past self.
-
 ━━━━━━━━━━━━━━━━━━━
 AUTHORIAL PRESERVATION
 ━━━━━━━━━━━━━━━━━━━
 
-Do NOT flatten the prose.
-
-Do NOT remove literary sophistication.
-
-Do NOT over-fragment the narration.
-
-Preserve the author's identity:
+AUTHOR
 
 ${author.name}
 
 VOICE
 
-${author.voice}
+${author.voice ?? ""}
 
 NARRATIVE PRINCIPLES
 
-${author.narrativePrinciples.join("\n")}
+${(author.narrativePrinciples ?? []).join("\n")}
 
 ━━━━━━━━━━━━━━━━━━━
 CHAPTER
@@ -225,3 +167,5 @@ OUTPUT
 Return ONLY the improved chapter.
 
 `
+}
+

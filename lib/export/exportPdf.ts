@@ -12,8 +12,10 @@ import path from "path"
 import PDFDocument from "pdfkit"
 
 import type {
+
     GeneratedBook
-} from "@/lib/books/types"
+
+} from "@/lib/types/book"
 
 /*
 ━━━━━━━━━━━━━━━━━━━

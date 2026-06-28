@@ -68,7 +68,7 @@ ${editorialIdentity.positioning}
 VISUAL LANGUAGE
 ━━━━━━━━━━━━━━━━━━━
 
-${editorialIdentity.visualIdentity.coverStyle
+${editorialIdentity.visualIdentity.aesthetics
                 .map(item => `- ${item}`)
                 .join("\n")}
 

@@ -238,7 +238,7 @@ ${input.author.coreWound}
 EMOTIONAL OBSESSIONS
 ━━━━━━━━━━━━━━━━━━━
 
-${input.author.emotionalObsession
+${(input.author.emotionalObsession ?? [])
                 .map(item => `- ${item}`)
                 .join("\n")}
 
@@ -248,36 +248,40 @@ NARRATIVE STYLE
 
 PROSE
 
-${input.author.proseStyle
+${(input.author.proseStyle ?? [])
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
 PACING
 
-${input.author.pacingStyle
+${(input.author.pacingStyle ?? [])
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
-TENSION
+    TENSION
 
-${input.author.tensionStyle
+${(input.author.tensionStyle ?? [])
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
 ━━━━━━━━━━━━━━━━━━━
 READER COMPULSION
 ━━━━━━━━━━━━━━━━━━━
 
-${input.author.readerHooks
+${(input.author.readerHooks ?? [])
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
+━━━━━━━━━━━━━━━━━━━
 ━━━━━━━━━━━━━━━━━━━
 MASTER PROMPT
 ━━━━━━━━━━━━━━━━━━━
 
-${input.author.masterPrompt}
-
+${input.author.masterPrompt ?? ""}
 `
 
         /*
@@ -292,16 +296,16 @@ ${input.author.masterPrompt}
 NARRATIVE BIBLE
 ━━━━━━━━━━━━━━━━━━━
 
-TITLE
+    TITLE
 
 ${input.narrativeBible.title}
 
-GENRE
+    GENRE
 
 ${input.narrativeBible.genre}
 
 ━━━━━━━━━━━━━━━━━━━
-PREMISE
+    PREMISE
 ━━━━━━━━━━━━━━━━━━━
 
 ${input.narrativeBible.premise}
@@ -330,7 +334,8 @@ THEMATIC CORE
 
 ${input.narrativeBible.thematicCore
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
 ━━━━━━━━━━━━━━━━━━━
 READER COMPULSION
@@ -338,9 +343,10 @@ READER COMPULSION
 
 ${input.narrativeBible.readerCompulsion.hooks
                 .map(item => `- ${item}`)
-                .join("\n")}
+                .join("\n")
+            }
 
-`
+    `
 
         /*
         ━━━━━━━━━━━━━━━━━━━
@@ -356,13 +362,13 @@ OUTLINE ENGINE
 
 The outline MUST:
 
-- escalate emotional tension
-- progressively destabilize characters
-- create binge-reading momentum
-- increase psychological pressure
-- deepen emotional contradictions
-- generate emotional consequences
-- create invisible reader addiction
+    - escalate emotional tension
+        - progressively destabilize characters
+            - create binge - reading momentum
+                - increase psychological pressure
+                    - deepen emotional contradictions
+                        - generate emotional consequences
+                            - create invisible reader addiction
 
 ━━━━━━━━━━━━━━━━━━━
 CHAPTER DESIGN
@@ -370,27 +376,27 @@ CHAPTER DESIGN
 
 Each chapter MUST:
 
-- introduce emotional movement
-- create relational pressure
-- reveal psychological instability
-- increase narrative urgency
-- generate emotional suspense
-- evolve character psychology
-- end with unresolved tension
+    - introduce emotional movement
+        - create relational pressure
+            - reveal psychological instability
+                - increase narrative urgency
+                    - generate emotional suspense
+                        - evolve character psychology
+                            - end with unresolved tension
 
 ━━━━━━━━━━━━━━━━━━━
-IMPORTANT
+    IMPORTANT
 ━━━━━━━━━━━━━━━━━━━
 
-Avoid:
+    Avoid:
 
-- generic plot progression
-- repetitive emotional beats
-- atmosphere without progression
-- static character dynamics
-- filler scenes
-- predictable twists
-- empty sophistication
+    - generic plot progression
+        - repetitive emotional beats
+            - atmosphere without progression
+                - static character dynamics
+                    - filler scenes
+                        - predictable twists
+                            - empty sophistication
 
 ━━━━━━━━━━━━━━━━━━━
 KINDLE RETENTION
@@ -398,9 +404,9 @@ KINDLE RETENTION
 
 Readers must constantly feel:
 
-"just one more chapter"
+    "just one more chapter"
 
-`
+        `
 
         /*
         ━━━━━━━━━━━━━━━━━━━
@@ -439,74 +445,74 @@ OUTLINE ENGINE
 ${outlineEngine}
 
 ━━━━━━━━━━━━━━━━━━━
-BOOK
+    BOOK
 ━━━━━━━━━━━━━━━━━━━
 
-TITLE:
+    TITLE:
 ${input.title}
 
-SUBTITLE:
+    SUBTITLE:
 ${input.subtitle || ""}
 
 ━━━━━━━━━━━━━━━━━━━
-STRUCTURE
+    STRUCTURE
 ━━━━━━━━━━━━━━━━━━━
 
-Create:
+    Create:
 
-- emotionally powerful introduction
-- 12 addictive chapters
-- progressive psychological escalation
-- emotional deterioration
-- relational instability
-- sophisticated reveals
-- cinematic pacing
-- emotionally unforgettable climax
-- haunting emotional ending
+    - emotionally powerful introduction
+        - 12 addictive chapters
+            - progressive psychological escalation
+                - emotional deterioration
+                    - relational instability
+                        - sophisticated reveals
+                            - cinematic pacing
+                                - emotionally unforgettable climax
+                                    - haunting emotional ending
 
 ━━━━━━━━━━━━━━━━━━━
-FORMAT
+    FORMAT
 ━━━━━━━━━━━━━━━━━━━
 
 Return ONLY valid JSON.
 
 {
-  "introduction": "",
-  "emotionalPremise": "",
-  "atmosphere": [],
-  "recurringThemes": [],
-  "symbolicElements": [],
+        "introduction": "",
+            "emotionalPremise": "",
+                "atmosphere": [],
+                    "recurringThemes": [],
+                        "symbolicElements": [],
 
-  "characters": [
-    {
-      "name": "",
-      "role": "",
-      "psychologicalWound": "",
-      "contradiction": "",
-      "emotionalNeed": "",
-      "behavioralPattern": "",
-      "symbolicObject": ""
+                            "characters": [
+                                {
+                                    "name": "",
+                                    "role": "",
+                                    "psychologicalWound": "",
+                                    "contradiction": "",
+                                    "emotionalNeed": "",
+                                    "behavioralPattern": "",
+                                    "symbolicObject": ""
+                                }
+                            ],
+
+                                "chapters": [
+                                    {
+                                        "number": 1,
+                                        "title": "",
+                                        "emotionalGoal": "",
+                                        "dramaticShift": "",
+                                        "psychologicalProgression": "",
+                                        "tensionEscalation": "",
+                                        "readerHook": "",
+                                        "callbackSeed": ""
+                                    }
+                                ],
+
+                                    "climax": "",
+                                        "ending": ""
     }
-  ],
 
-  "chapters": [
-    {
-      "number": 1,
-      "title": "",
-      "emotionalGoal": "",
-      "dramaticShift": "",
-      "psychologicalProgression": "",
-      "tensionEscalation": "",
-      "readerHook": "",
-      "callbackSeed": ""
-    }
-  ],
-
-  "climax": "",
-  "ending": ""
-}
-
-`
+    `
 
         /*
         ━━━━━━━━━━━━━━━━━━━
@@ -581,7 +587,7 @@ OUTLINE GENERATED
 
 ${parsed.chapters.length} chapters created
 
-`)
+        `)
 
         return parsed
 
@@ -593,7 +599,7 @@ ${parsed.chapters.length} chapters created
 OUTLINE ERROR
 ━━━━━━━━━━━━━━━━━━━
 
-`)
+    `)
 
         console.error(error)
 

@@ -1,4 +1,3 @@
-```ts
 import fs from "fs/promises"
 
 import path from "path"
@@ -190,13 +189,13 @@ export async function generateCoverImage({
 
     const prompt = `
 
-${ generation.imagePrompt }
+${generation.imagePrompt}
 
-${ generation.thumbnailPrompt }
+${generation.thumbnailPrompt}
 
-${ generation.typographyOverlay }
+${generation.typographyOverlay}
 
-${ generation.cinematicDirection }
+${generation.cinematicDirection}
 
 `
 
@@ -290,10 +289,7 @@ ${ generation.cinematicDirection }
 
         const safeName =
             sanitizeFileName(
-
-                generation.title ||
-                "cover"
-
+                `cover-${Date.now()}`
             )
 
         localPath =
@@ -301,7 +297,7 @@ ${ generation.cinematicDirection }
 
                 base64,
 
-                `${ safeName }.png`
+                `${safeName}.png`
 
             )
 
@@ -352,4 +348,4 @@ ${ generation.cinematicDirection }
     }
 
 }
-```
+

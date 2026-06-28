@@ -347,7 +347,7 @@ to hide their cruelty well.
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    readerExperience:
+    readerExperience: [
         `
 Readers should constantly feel
 that emotional safety is deteriorating slowly,
@@ -364,7 +364,8 @@ Readers should feel trapped
 inside emotionally sophisticated relationships
 where affection and manipulation
 have become difficult to separate.
-`,
+`
+    ],
 
     chapterEndings: [
 

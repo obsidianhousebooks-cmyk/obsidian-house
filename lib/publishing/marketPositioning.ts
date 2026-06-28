@@ -4,17 +4,7 @@ MARKET POSITIONING
 ━━━━━━━━━━━━━━━━━━━
 */
 
-import {
 
-    editorialIdentity
-
-} from "@/lib/editorial/editorialIdentity"
-
-import {
-
-    narrativeBible
-
-} from "@/lib/editorial/narrativeBible"
 
 /*
 ━━━━━━━━━━━━━━━━━━━

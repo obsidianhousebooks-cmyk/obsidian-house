@@ -1,4 +1,3 @@
-```ts id="dlcover01"
 import fs from "fs/promises"
 
 import path from "path"
@@ -77,7 +76,7 @@ async function downloadImageBuffer(
 
         throw new Error(
 
-            `Failed to download image: ${ response.status } `
+            `Failed to download image: ${response.status} `
 
         )
 
@@ -194,7 +193,7 @@ export async function downloadCoverImage({
         )
 
     const fileName =
-        `${ safeTitle }.png`
+        `${safeTitle}.png`
 
     const filePath =
         path.join(
@@ -278,9 +277,9 @@ export async function downloadCoverImage({
             ),
 
         publicPath:
-            `/ exports / covers / ${ fileName } `
+            `/ exports / covers / ${fileName} `
 
     }
 
 }
-```
+
