@@ -119,32 +119,32 @@ export default function CurrentRelease() {
                     >
 
                         {
-                            currentRelease.amazonUrl && (
+                            currentRelease.amazon?.kindle && (
                                 <a
-                                    href={currentRelease.amazonUrl}
+                                    href={currentRelease.amazon.kindle}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="
-        inline-flex
-        items-center
-        justify-center
-        px-6
-        py-4
-        rounded-xl
-        border
-        border-[#C6A15B]
-        bg-[#C6A15B]
-        text-black
-        font-semibold
-        tracking-wide
-        transition-all
-        duration-300
-        hover:bg-[#d4af68]
-        hover:border-[#d4af68]
-        hover:shadow-[0_0_30px_rgba(198,161,91,0.25)]
-    "
+inline-flex
+items-center
+justify-center
+px-6
+py-4
+rounded-xl
+border
+border-[#C6A15B]
+bg-[#C6A15B]
+text-black
+font-semibold
+tracking-wide
+transition-all
+duration-300
+hover:bg-[#d4af68]
+hover:border-[#d4af68]
+hover:shadow-[0_0_30px_rgba(198,161,91,0.25)]
+"
                                 >
-                                    Read on Amazon
+                                    Kindle Edition
                                 </a>
                             )
                         }

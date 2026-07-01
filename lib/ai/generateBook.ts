@@ -38,7 +38,7 @@ GENERATED BOOK
 ━━━━━━━━━━━━━━━━━━━
 */
 
-export interface GeneratedBook {
+export interface GeneratedManuscript {
 
     title: string
 
@@ -94,7 +94,7 @@ export async function generateBook(
 
     }
 
-): Promise<GeneratedBook> {
+): Promise<GeneratedManuscript> {
 
     console.log(`
 

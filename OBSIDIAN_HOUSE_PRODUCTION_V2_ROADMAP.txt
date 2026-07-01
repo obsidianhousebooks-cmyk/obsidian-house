@@ -1,0 +1,136 @@
+# OBSIDIAN HOUSE PRODUCTION V2.0
+
+## Mission
+
+Create books without destroying author identity.
+
+Obsidian House is not a content factory.
+
+Obsidian House is an author-centric literary publishing system.
+
+The objective is to preserve the DNA of every author while producing contemporary literature of exceptional quality.
+
+---
+
+## Core Principles
+
+### Author First
+
+Every decision must protect the author voice.
+
+### Literary Identity
+
+Each author must remain psychologically unique.
+
+### Humanized Authors
+
+Authors are not bots.
+
+Authors are literary beings with memories, wounds, philosophies and unique perspectives.
+
+### Editorial Quality
+
+Quality before quantity.
+
+### Long-Term Catalog
+
+Build authors, not products.
+
+---
+
+## Authors
+
+### Lena Voss
+
+Status: Active
+
+Core Theme:
+Tenderness, loneliness and emotional visibility.
+
+### Elias Moreau
+
+Status: Active
+
+Core Theme:
+Technology, systems and human alienation.
+
+### Clara Vale
+
+Status: Active
+
+Core Theme:
+Love, memory and transformation.
+
+### Adrian Veil
+
+Status: Active
+
+Core Theme:
+Secrets, shadows and truth.
+
+### Noa Arden
+
+Status: Active
+
+Core Theme:
+Meaning, existence and human consciousness.
+
+---
+
+## Development Roadmap
+
+### Phase 1
+
+Author Brain
+
+Objective:
+
+Build complete literary DNA for every author.
+
+### Phase 2
+
+DNA Validator
+
+Objective:
+
+Verify if generated content matches the author identity.
+
+### Phase 3
+
+Editorial Auditor
+
+Objective:
+
+Improve literary quality and emotional consistency.
+
+### Phase 4
+
+Cover Intelligence
+
+Objective:
+
+Generate visual identities aligned with each author.
+
+### Phase 5
+
+Publishing Pipeline
+
+Objective:
+
+Generate publication-ready packages.
+
+EPUB
+DOCX
+PDF
+Metadata
+Amazon KDP Package
+
+---
+
+## Long-Term Goal
+
+Generate books while preserving author identity.
+
+Target Author Fidelity:
+
+95%+

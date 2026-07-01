@@ -9,6 +9,21 @@ export const currentRelease = {
 
     /*
     ━━━━━━━━━━━━━━━━━━━
+    RELEASE
+    ━━━━━━━━━━━━━━━━━━━
+    */
+
+    id:
+        "release-001",
+
+    status:
+        "published",
+
+    releaseDate:
+        "2026-07-01",
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━
     IDENTITY
     ━━━━━━━━━━━━━━━━━━━
     */
@@ -18,6 +33,9 @@ export const currentRelease = {
 
     slug:
         "everything-tender-eventually-breaks",
+
+    author:
+        "lena-voss",
 
     /*
     ━━━━━━━━━━━━━━━━━━━
@@ -42,15 +60,30 @@ export const currentRelease = {
 
     /*
     ━━━━━━━━━━━━━━━━━━━
-    LINKS
+    AMAZON
     ━━━━━━━━━━━━━━━━━━━
     */
 
-    amazonUrl:
-        "#",
+    amazon: {
+
+        kindle:
+            "https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26",
+
+        paperback:
+            "https://www.amazon.com/dp/B0H73RN4K3",
+
+        author:
+            "https://amazon.com/author/lena-voss"
+
+    },
+
+    /*
+    ━━━━━━━━━━━━━━━━━━━
+    INTERNAL LINKS
+    ━━━━━━━━━━━━━━━━━━━
+    */
 
     authorUrl:
         "/authors/lena-voss"
 
 }
-

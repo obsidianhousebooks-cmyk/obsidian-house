@@ -10,9 +10,7 @@ import fs from "fs/promises"
 import path from "path"
 
 import type {
-
-    GeneratedBook
-
+    GeneratedManuscript
 } from "@/lib/ai/generateBook"
 
 function sanitizeFileName(
@@ -30,7 +28,7 @@ function sanitizeFileName(
 
 export async function exportMarkdown(
 
-    book: GeneratedBook
+    book: GeneratedManuscript
 
 ): Promise<string> {
 

@@ -158,42 +158,74 @@ export default async function AuthorPage({
 
                         <div
                             className="
-                                flex
-                                flex-wrap
-                                gap-5
-                                mt-14
-                            "
+        flex
+        flex-wrap
+        gap-5
+        mt-14
+    "
                         >
 
                             <a
-                                href={currentRelease.amazonUrl}
+                                href={currentRelease.amazon.kindle}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="
-                                    px-8
-                                    py-4
-                                    rounded-full
-                                    bg-[#c6a15b]
-                                    text-black
-                                    font-semibold
-                                    hover:opacity-90
-                                    transition
-                                "
+            px-8
+            py-4
+            rounded-full
+            bg-[#c6a15b]
+            text-black
+            font-semibold
+        "
                             >
-                                Read the Novel
+                                Read on Kindle
+                            </a>
+
+                            <a
+                                href={currentRelease.amazon.paperback}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="
+            px-8
+            py-4
+            rounded-full
+            border
+            border-white/15
+            hover:bg-white/5
+            transition
+        "
+                            >
+                                Buy Paperback
+                            </a>
+
+                            <a
+                                href={currentRelease.amazon.author}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="
+            px-8
+            py-4
+            rounded-full
+            border
+            border-white/15
+            hover:bg-white/5
+            transition
+        "
+                            >
+                                Amazon Author
                             </a>
 
                             <Link
                                 href={`/books/${currentRelease.slug}/read`}
                                 className="
-                                    px-8
-                                    py-4
-                                    rounded-full
-                                    border
-                                    border-white/15
-                                    hover:bg-white/5
-                                    transition
-                                "
+            px-8
+            py-4
+            rounded-full
+            border
+            border-white/15
+            hover:bg-white/5
+            transition
+        "
                             >
                                 Read Sample
                             </Link>
