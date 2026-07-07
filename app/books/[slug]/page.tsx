@@ -1,245 +1,224 @@
+import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 
 import { books } from "@/lib/books"
+import AmazonButton from "@/components/analytics/AmazonButton"
 
-interface BookPageProps {
-
+interface PageProps {
     params: Promise<{
         slug: string
     }>
-
 }
 
 export default async function BookPage({
-
     params
+}: PageProps) {
 
-}: BookPageProps) {
+    const { slug } = await params
 
-    const {
-
-        slug
-
-    } = await params
-
-    const book =
-        books.find(
-
-            item =>
-                item.slug === slug
-
-        )
+    const book = books.find(
+        (item) => item.slug === slug
+    )
 
     if (!book) {
-
         notFound()
-
     }
 
     return (
 
-        <main className="min-h-screen bg-[#050505] text-[#f5efe6] overflow-hidden">
+        <main className="bg-white text-neutral-900">
 
-            {/* HERO */}
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            HERO
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-            <section className="relative overflow-hidden border-b border-white/[0.06]">
+            <section className="border-b border-neutral-200">
 
-                {/* BACKGROUND */}
+                <div className="mx-auto max-w-7xl px-6 py-20">
 
-                <div className="absolute inset-0">
+                    <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
 
-                    <div
-                        className="
-                            absolute
-                            inset-0
-                            bg-cover
-                            bg-center
-                            opacity-[0.10]
-                            scale-105
-                            blur-[2px]
-                        "
-                        style={{
-                            backgroundImage:
-                                "url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=2000&auto=format&fit=crop')"
-                        }}
-                    />
+                        <div>
 
-                    <div className="absolute inset-0 bg-black/80" />
+                            <div className="mb-5 inline-flex items-center rounded-full border border-neutral-300 px-4 py-2 text-xs uppercase tracking-[0.25em] text-neutral-600">
 
-                    <div
-                        className="
-                            absolute
-                            inset-0
-                            bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_60%)]
-                        "
-                    />
+                                Obsidian House
 
-                </div>
+                            </div>
 
-                {/* CONTENT */}
+                            <h1 className="mb-6 text-5xl font-light leading-tight md:text-6xl">
 
-                <div className="relative max-w-[1700px] mx-auto px-8 md:px-16 pt-40 pb-36">
+                                {book.title}
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+                            </h1>
 
-                        {/* COVER */}
+                            <p className="mb-4 text-sm uppercase tracking-[0.2em] text-neutral-500">
 
-                        <div className="lg:col-span-5">
+                                {book.genre}
+                            </p>
 
-                            <div
-                                className="
-                                    overflow-hidden
-                                    border
-                                    border-white/[0.08]
-                                    bg-[#0a0a0a]
-                                    p-5
-                                "
-                            >
+                            <div className="mb-8 h-px w-24 bg-neutral-300" />
 
-                                <img
+                            <p className="max-w-2xl whitespace-pre-line text-lg leading-8 text-neutral-700">
+
+                                {book.premise}
+
+                            </p>
+
+                            <div className="mt-10 flex flex-wrap gap-4">
+
+                                <Link
+                                    href={`/books/${book.slug}/read`}
+                                    className="rounded-full bg-black px-8 py-4 text-sm font-medium text-white transition hover:opacity-90"
+                                >
+                                    Read Sample
+                                </Link>
+
+                                <AmazonButton
+                                    book={book.slug}
+                                    format="kindle"
+                                    source="book"
+                                    url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26/ref=tmm_kin_swatch_0"
+                                >
+                                    Kindle Edition
+                                </AmazonButton>
+
+                                <AmazonButton
+                                    book={book.slug}
+                                    format="paperback"
+                                    source="book"
+                                    url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3/ref=tmm_pap_swatch_0"
+                                >
+                                    Paperback
+                                </AmazonButton>
+
+                            </div>
+
+                        </div>
+
+                        <div className="mx-auto w-full max-w-md">
+
+                            <div className="overflow-hidden rounded-3xl border border-neutral-200 shadow-2xl">
+
+                                <Image
                                     src="/covers/lena-cover.jpg"
                                     alt={book.title}
-                                    className="
-                                        w-full
-                                        object-cover
-                                    "
+                                    width={900}
+                                    height={1400}
+                                    className="h-auto w-full object-cover"
+                                    priority
                                 />
 
                             </div>
 
                         </div>
 
-                        {/* INFO */}
+                    </div>
 
-                        <div className="lg:col-span-7">
+                </div>
 
-                            <div className="max-w-3xl space-y-12">
+            </section>
 
-                                {/* LABEL */}
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            OPENING PARAGRAPH
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-                                <div className="uppercase tracking-[0.45em] text-[11px] text-[#c6aa7b]">
+            <section className="border-b border-neutral-200">
 
-                                    Obsidian House
+                <div className="mx-auto max-w-4xl px-6 py-20">
 
-                                </div>
+                    <p className="mb-6 text-xs uppercase tracking-[0.3em] text-neutral-500">
 
-                                {/* TITLE */}
+                        Opening Paragraph
 
-                                <div className="space-y-8">
+                    </p>
 
-                                    <h1
-                                        className="
-                                            font-serif
-                                            text-[clamp(4rem,8vw,8rem)]
-                                            leading-[0.9]
-                                            tracking-[-0.06em]
-                                            text-[#f8f4ee]
-                                        "
-                                    >
+                    <div className="h-px w-20 bg-neutral-300 mb-8" />
 
-                                        {book.title}
+                    <div className="whitespace-pre-line text-xl leading-10 text-neutral-700">
 
-                                    </h1>
+                        {book.openingParagraph}
 
-                                    <p
-                                        className="
-                                            italic
-                                            text-[clamp(1.2rem,2vw,2rem)]
-                                            text-[#b7aa97]
-                                        "
-                                    >
+                    </div>
 
-                                        A novel by Lena Voss
+                </div>
 
-                                    </p>
+            </section>
 
-                                </div>
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            WHY READERS STAY
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-                                {/* OPENING */}
+            <section className="border-b border-neutral-200">
 
-                                <div className="border-l border-[#c6aa7b]/30 pl-8">
+                <div className="mx-auto max-w-5xl px-6 py-20">
 
-                                    <p
-                                        className="
-                                            font-serif
-                                            text-[clamp(1.5rem,2vw,2.4rem)]
-                                            leading-[1.7]
-                                            text-[#f0e7dc]
-                                            whitespace-pre-line
-                                        "
-                                    >
+                    <h2 className="mb-10 text-4xl font-light">
 
-                                        {book.openingParagraph}
+                        Why Readers Stay With This Story
+                    </h2>
 
-                                    </p>
+                    <div className="grid gap-6 md:grid-cols-3">
 
-                                </div>
+                        <div className="rounded-3xl border border-neutral-200 p-8">
 
-                                {/* PREMISE */}
+                            <h3 className="mb-4 text-lg font-medium">
 
-                                <div className="max-w-2xl">
+                                Emotional Precision
 
-                                    <p
-                                        className="
-                                            text-[20px]
-                                            leading-[2]
-                                            text-[#ab9f90]
-                                            whitespace-pre-line
-                                        "
-                                    >
+                            </h3>
 
-                                        {book.premise}
+                            <p className="leading-8 text-neutral-700">
 
-                                    </p>
+                                Every interaction carries emotional weight.
+                                The story focuses on subtle shifts that slowly
+                                transform ordinary moments into life-changing
+                                experiences.
 
-                                </div>
+                            </p>
 
-                                {/* BUTTONS */}
+                        </div>
 
-                                <div className="flex flex-wrap gap-5 pt-6">
+                        <div className="rounded-3xl border border-neutral-200 p-8">
 
-                                    <button
-                                        className="
-                                            px-8
-                                            py-4
-                                            bg-[#f3ebe2]
-                                            text-black
-                                            uppercase
-                                            tracking-[0.24em]
-                                            text-[11px]
-                                            hover:bg-white
-                                            transition-all
-                                            duration-500
-                                        "
-                                    >
+                            <h3 className="mb-4 text-lg font-medium">
 
-                                        Begin Reading
+                                Psychological Intimacy
 
-                                    </button>
+                            </h3>
 
-                                    <button
-                                        className="
-                                            px-8
-                                            py-4
-                                            border
-                                            border-white/[0.08]
-                                            text-[#d9cab8]
-                                            uppercase
-                                            tracking-[0.24em]
-                                            text-[11px]
-                                            hover:bg-white/[0.03]
-                                            transition-all
-                                            duration-500
-                                        "
-                                    >
+                            <p className="leading-8 text-neutral-700">
 
-                                        Enter the Atmosphere
+                                Rather than relying on spectacle, the novel
+                                explores vulnerability, attachment and the
+                                dangerous comfort of being deeply understood.
 
-                                    </button>
+                            </p>
 
-                                </div>
+                        </div>
 
-                            </div>
+                        <div className="rounded-3xl border border-neutral-200 p-8">
+
+                            <h3 className="mb-4 text-lg font-medium">
+
+                                Quiet Suspense
+
+                            </h3>
+
+                            <p className="leading-8 text-neutral-700">
+
+                                The tension grows through emotional dependency,
+                                uncertainty and invisible psychological
+                                escalation.
+
+                            </p>
 
                         </div>
 
@@ -249,57 +228,40 @@ export default async function BookPage({
 
             </section>
 
-            {/* EMOTIONAL CORE */}
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            EMOTIONAL CORE
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-            <section className="px-8 md:px-16 py-36 border-b border-white/[0.05]">
+            <section className="border-b border-neutral-200">
 
-                <div className="max-w-[1500px] mx-auto">
+                <div className="mx-auto max-w-6xl px-6 py-20">
 
-                    <div className="mb-20">
+                    <h2 className="mb-12 text-4xl font-light">
 
-                        <div className="uppercase tracking-[0.4em] text-[11px] text-[#c6aa7b]">
+                        Emotional Core
 
-                            Emotional Core
+                    </h2>
 
-                        </div>
+                    <div className="grid gap-4 md:grid-cols-2">
 
-                    </div>
+                        {book.emotionalCore.map((item) => (
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                            <div
+                                key={item}
+                                className="rounded-2xl border border-neutral-200 p-6"
+                            >
 
-                        {book.emotionalCore.map(
+                                <p className="capitalize text-neutral-800">
 
-                            (item: string) => (
+                                    {item}
 
-                                <div
-                                    key={item}
-                                    className="
-                                        border
-                                        border-white/[0.06]
-                                        bg-white/[0.02]
-                                        backdrop-blur-md
-                                        p-8
-                                    "
-                                >
+                                </p>
 
-                                    <p
-                                        className="
-                                            font-serif
-                                            text-[28px]
-                                            leading-[1.6]
-                                            text-[#f1e8dd]
-                                        "
-                                    >
+                            </div>
 
-                                        {item}
-
-                                    </p>
-
-                                </div>
-
-                            )
-
-                        )}
+                        ))}
 
                     </div>
 
@@ -307,89 +269,39 @@ export default async function BookPage({
 
             </section>
 
-            {/* ATMOSPHERE */}
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            ATMOSPHERE
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-            <section className="px-8 md:px-16 py-36 border-b border-white/[0.05]">
+            <section className="border-b border-neutral-200 bg-neutral-50">
 
-                <div className="max-w-[1500px] mx-auto">
+                <div className="mx-auto max-w-6xl px-6 py-20">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
+                    <h2 className="mb-12 text-4xl font-light">
 
-                        {/* LEFT */}
+                        Atmosphere
+                    </h2>
 
-                        <div className="lg:col-span-5">
+                    <div className="grid gap-4 md:grid-cols-4">
 
-                            <div className="space-y-10">
+                        {book.atmosphere.map((item) => (
 
-                                <div className="uppercase tracking-[0.4em] text-[11px] text-[#c6aa7b]">
+                            <div
+                                key={item}
+                                className="rounded-2xl bg-white p-6 shadow-sm"
+                            >
 
-                                    The Atmosphere
+                                <p className="capitalize text-neutral-700">
 
-                                </div>
+                                    {item}
 
-                                <h2
-                                    className="
-                                        font-serif
-                                        text-[clamp(2.5rem,4vw,5rem)]
-                                        leading-[1.08]
-                                        tracking-[-0.04em]
-                                        text-[#f4ede3]
-                                    "
-                                >
-
-                                    Rain against windows.
-                                    Apartments filled with silence.
-                                    Emotionally exhausted people
-                                    surviving quietly.
-
-                                </h2>
+                                </p>
 
                             </div>
 
-                        </div>
-
-                        {/* RIGHT */}
-
-                        <div className="lg:col-span-7">
-
-                            <div className="grid grid-cols-2 gap-5">
-
-                                {book.atmosphere.map(
-
-                                    (item: string) => (
-
-                                        <div
-                                            key={item}
-                                            className="
-                                                border
-                                                border-white/[0.06]
-                                                bg-white/[0.02]
-                                                p-7
-                                            "
-                                        >
-
-                                            <p
-                                                className="
-                                                    uppercase
-                                                    tracking-[0.22em]
-                                                    text-[11px]
-                                                    text-[#d5c6b5]
-                                                "
-                                            >
-
-                                                {item}
-
-                                            </p>
-
-                                        </div>
-
-                                    )
-
-                                )}
-
-                            </div>
-
-                        </div>
+                        ))}
 
                     </div>
 
@@ -397,57 +309,172 @@ export default async function BookPage({
 
             </section>
 
-            {/* THEMES */}
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            THEMES
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-            <section className="px-8 md:px-16 py-36">
+            <section className="border-b border-neutral-200">
 
-                <div className="max-w-[1500px] mx-auto">
+                <div className="mx-auto max-w-6xl px-6 py-20">
 
-                    <div className="mb-20">
+                    <h2 className="mb-12 text-4xl font-light">
 
-                        <div className="uppercase tracking-[0.4em] text-[11px] text-[#c6aa7b]">
+                        Themes
 
-                            Themes
+                    </h2>
 
-                        </div>
+                    <div className="flex flex-wrap gap-4">
+
+                        {book.themes.map((theme) => (
+
+                            <span
+                                key={theme}
+                                className="rounded-full border border-neutral-300 px-5 py-3 text-sm"
+                            >
+                                {theme}
+                            </span>
+
+                        ))}
 
                     </div>
 
-                    <div className="flex flex-wrap gap-5">
+                </div>
 
-                        {book.themes.map(
+            </section>
 
-                            (theme: string) => (
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            FIRST CHAPTER
+            ━━━━━━━━━━━━━━━━━━━
+            */}
 
-                                <div
-                                    key={theme}
-                                    className="
-                                        px-6
-                                        py-4
-                                        border
-                                        border-white/[0.08]
-                                        bg-white/[0.02]
-                                    "
-                                >
+            <section className="border-b border-neutral-200">
 
-                                    <p
-                                        className="
-                                            uppercase
-                                            tracking-[0.24em]
-                                            text-[11px]
-                                            text-[#d5c7b7]
-                                        "
-                                    >
+                <div className="mx-auto max-w-4xl px-6 py-20 text-center">
 
-                                        {theme}
+                    <p className="mb-4 text-xs uppercase tracking-[0.25em] text-neutral-500">
 
-                                    </p>
+                        First Chapter
 
-                                </div>
+                    </p>
 
-                            )
+                    <h2 className="mb-6 text-4xl font-light">
 
-                        )}
+                        {book.chapters?.[0]?.title}
+
+                    </h2>
+
+                    <Link
+                        href={`/books/${book.slug}/read`}
+                        className="inline-flex rounded-full bg-black px-8 py-4 text-white"
+                    >
+                        Start Reading
+                    </Link>
+
+                </div>
+
+            </section>
+
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            MEET LENA VOSS
+            ━━━━━━━━━━━━━━━━━━━
+            */}
+
+            <section className="border-b border-neutral-200">
+
+                <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+
+                    <p className="mb-4 text-xs uppercase tracking-[0.25em] text-neutral-500">
+
+                        Author
+
+                    </p>
+
+                    <h2 className="mb-8 text-4xl font-light">
+
+                        Meet Lena Voss
+
+                    </h2>
+
+                    <p className="mx-auto max-w-3xl text-lg leading-9 text-neutral-700">
+
+                        Lena Voss writes emotionally immersive literary fiction
+                        exploring attachment, vulnerability, loneliness and
+                        psychological intimacy. Her stories focus on the
+                        invisible emotional forces that quietly reshape lives.
+
+                    </p>
+
+                    <div className="mt-10">
+
+                        <AmazonButton
+                            book={book.slug}
+                            format="author_page"
+                            source="book"
+                            url="https://www.amazon.com/stores/Lena-Voss/author/B0H75TLFLB?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=e740412d-d926-442f-b826-c805ecda0930"
+                        >
+                            Visit Amazon Author Page
+                        </AmazonButton>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            {/*
+            ━━━━━━━━━━━━━━━━━━━
+            FINAL CTA
+            ━━━━━━━━━━━━━━━━━━━
+            */}
+
+            <section>
+
+                <div className="mx-auto max-w-5xl px-6 py-24 text-center">
+
+                    <h2 className="mb-6 text-5xl font-light">
+
+                        Continue The Story
+
+                    </h2>
+
+                    <p className="mx-auto mb-12 max-w-3xl text-lg leading-8 text-neutral-700">
+
+                        Begin with the sample chapter, then continue the journey
+                        through one of Obsidian House's most emotionally
+                        immersive novels.
+
+                    </p>
+
+                    <div className="flex flex-wrap justify-center gap-4">
+
+                        <Link
+                            href={`/books/${book.slug}/read`}
+                            className="rounded-full bg-black px-8 py-4 text-white"
+                        >
+                            Read Sample
+                        </Link>
+
+                        <AmazonButton
+                            book={book.slug}
+                            format="kindle"
+                            source="book"
+                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26/ref=tmm_kin_swatch_0"
+                        >
+                            Buy Kindle
+                        </AmazonButton>
+
+                        <AmazonButton
+                            book={book.slug}
+                            format="paperback"
+                            source="book"
+                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3/ref=tmm_pap_swatch_0"
+                        >
+                            Buy Paperback
+                        </AmazonButton>
 
                     </div>
 
