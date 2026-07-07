@@ -1,3 +1,4 @@
+import AmazonButton from "@/components/analytics/AmazonButton"
 import {
   editorialAuthors
 } from "@/lib/editorial/authors/selector"
@@ -121,7 +122,84 @@ export default function HomePage() {
             </h1>
 
             <div className="mt-14 max-w-[540px]">
+{/* CURRENT RELEASE */}
 
+<div className="mt-14">
+
+  <div
+    className="
+      text-[11px]
+      uppercase
+      tracking-[0.32em]
+      text-[#8f7a58]
+      mb-4
+    "
+  >
+    Current Release
+  </div>
+
+  <h3
+    className="
+      font-serif
+      text-3xl
+      text-[#f5efe6]
+      mb-3
+    "
+  >
+    Everything Tender Eventually Breaks
+  </h3>
+
+  <p
+    className="
+      text-[#8e8478]
+      mb-8
+    "
+  >
+    Lena Voss
+  </p>
+
+  <div
+    className="
+      flex
+      flex-wrap
+      gap-4
+    "
+  >
+
+    <a
+      href="/books/everything-tender-eventually-breaks/read"
+      className="
+        px-6
+        py-3
+        border
+        border-[#8f7a58]
+        text-[#f5efe6]
+      "
+    >
+      Read Sample
+    </a>
+
+    <AmazonButton
+  book="everything-tender-eventually-breaks"
+  format="kindle"
+  source="home"
+  url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26?ref_=ast_author_mpb"
+>
+  Buy Kindle
+</AmazonButton>
+
+<AmazonButton
+  book="everything-tender-eventually-breaks"
+  format="paperback"
+  source="home"
+  url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3/ref=tmm_pap_swatch_0"
+>
+  Buy Paperback
+</AmazonButton>
+
+  </div>
+
+</div>
               <p
                 className="
                                     text-[19px]
