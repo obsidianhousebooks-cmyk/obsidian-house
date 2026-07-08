@@ -195,7 +195,7 @@ export default function HomePage() {
                   source="home"
                   url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26?ref_=ast_author_mpb"
                 >
-                  Buy Kindle
+                  TESTE AMAZON HOME
                 </AmazonButton>
 
                 <AmazonButton
