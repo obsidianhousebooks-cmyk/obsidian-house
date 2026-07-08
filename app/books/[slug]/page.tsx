@@ -1,5 +1,4 @@
 import Link from "next/link"
-import AmazonButton from "@/components/analytics/AmazonButton"
 import { notFound } from "next/navigation"
 
 import { books } from "@/lib/books"
@@ -218,65 +217,55 @@ export default async function BookPage({
         Read Sample
     </Link>
 
-    <AmazonButton
-        book={book.slug}
-        format="kindle"
-        source="book"
-        url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26/ref=tmm_kin_swatch_0"
-        className="
-            px-8
-            py-4
-            border
-            border-white/[0.08]
-            bg-transparent
-            text-[#d9cab8]
-            uppercase
-            tracking-[0.24em]
-            text-[11px]
-        "
-    >
-        Kindle Edition
-    </AmazonButton>
+    <a
+  href="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26/ref=tmm_kin_swatch_0"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    px-8
+    py-4
+    rounded-full
+    bg-[#c6a15b]
+    text-black
+    font-semibold
+  "
+>
+  Read on Kindle
+</a>
 
-    <AmazonButton
-        book={book.slug}
-        format="paperback"
-        source="book"
-        url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3/ref=tmm_pap_swatch_0"
-        className="
-            px-8
-            py-4
-            border
-            border-white/[0.08]
-            bg-transparent
-            text-[#d9cab8]
-            uppercase
-            tracking-[0.24em]
-            text-[11px]
-        "
-    >
-        Paperback Edition
-    </AmazonButton>
+    <a
+  href="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3/ref=tmm_pap_swatch_0"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    px-8
+    py-4
+    rounded-full
+    border
+    border-white/15
+    hover:bg-white/5
+    transition
+  "
+>
+  Buy Paperback
+</a>
 
-    <AmazonButton
-        book={book.slug}
-        format="author_page"
-        source="book"
-        url="https://www.amazon.com/stores/Lena-Voss/author/B0H75TLFLB?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=f4e2033f-44ce-4ae6-85bb-61be2fd6fc70"
-        className="
-            px-8
-            py-4
-            border
-            border-white/[0.08]
-            bg-transparent
-            text-[#d9cab8]
-            uppercase
-            tracking-[0.24em]
-            text-[11px]
-        "
-    >
-        Author Page
-    </AmazonButton>
+    <a
+  href="https://www.amazon.com/stores/Lena-Voss/author/B0H75TLFLB?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=f4e2033f-44ce-4ae6-85bb-61be2fd6fc70"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    px-8
+    py-4
+    rounded-full
+    border
+    border-white/15
+    hover:bg-white/5
+    transition
+  "
+>
+  Amazon Author
+</a>
 
 </div>
 
@@ -390,7 +379,7 @@ export default async function BookPage({
                         </div>
 
                         {/* RIGHT */}
-
+                        
                         <div className="lg:col-span-7">
 
                             <div className="grid grid-cols-2 gap-5">
