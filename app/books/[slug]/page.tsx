@@ -79,13 +79,13 @@ export default async function BookPage({
 
                 {/* CONTENT */}
 
-                <div className="relative max-w-[1700px] mx-auto px-8 md:px-16 pt-40 pb-36">
+                <div className="relative max-w-[1400px] mx-auto px-8 md:px-16 pt-28 pb-24">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
                         {/* COVER */}
 
-                        <div className="lg:col-span-5">
+                        <div className="lg:col-span-5 flex justify-center">
 
                             <div
                                 className="
@@ -131,7 +131,7 @@ export default async function BookPage({
                                     <h1
                                         className="
                                             font-serif
-                                            text-[clamp(4rem,8vw,8rem)]
+                                            text-[clamp(3.2rem,6vw,6.5rem)]
                                             leading-[0.9]
                                             tracking-[-0.06em]
                                             text-[#f8f4ee]
@@ -183,7 +183,7 @@ export default async function BookPage({
                                     <p
                                         className="
                                             text-[20px]
-                                            leading-[2]
+                                            leading-[1.8]
                                             text-[#ab9f90]
                                             whitespace-pre-line
                                         "
@@ -204,8 +204,10 @@ export default async function BookPage({
         className="
             px-8
             py-4
-            bg-[#f3ebe2]
-            text-black
+            bg-[#c6aa7b]
+text-black
+font-semibold
+border border-[#c6aa7b]
             uppercase
             tracking-[0.24em]
             text-[11px]
@@ -224,7 +226,9 @@ export default async function BookPage({
   className="
     px-8
     py-4
-    rounded-full
+    uppercase
+tracking-[0.24em]
+text-[11px]
     bg-[#c6a15b]
     text-black
     font-semibold
@@ -347,7 +351,7 @@ export default async function BookPage({
 
                         {/* LEFT */}
 
-                        <div className="lg:col-span-5">
+                        <div className="lg:col-span-5 flex justify-center">
 
                             <div className="space-y-10">
 
