@@ -6,13 +6,13 @@ interface AmazonButtonProps {
   book: string
   format: "kindle" | "paperback" | "author_page"
   source:
-    | "home"
-    | "books"
-    | "book"
-    | "sample"
-    | "author"
-    | "journal"
-    | "about"
+  | "home"
+  | "books"
+  | "book"
+  | "sample"
+  | "author"
+  | "journal"
+  | "about"
   url: string
   children: React.ReactNode
   className?: string
@@ -55,15 +55,13 @@ export default function AmazonButton({
   return (
     <button
       onClick={handleClick}
-      className={`
-        px-6
-        py-3
-        bg-[#8f7a58]
-        text-[#050505]
-        hover:opacity-90
-        transition
-        ${className}
-      `}
+      style={{
+        background: "#8f7a58",
+        color: "#050505",
+        padding: "12px 24px",
+        border: "none",
+        cursor: "pointer"
+      }}
     >
       {children}
     </button>

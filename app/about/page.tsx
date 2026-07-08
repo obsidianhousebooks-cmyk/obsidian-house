@@ -1,5 +1,5 @@
 import CinematicSection from "@/components/cinematic/core/CinematicSection"
-
+import AmazonButton from "@/components/analytics/AmazonButton"
 export default function AboutPage() {
 
     const territories = [
@@ -331,7 +331,100 @@ export default function AboutPage() {
                 </div>
 
             </section>
+            <section
+                className="
+        border-t
+        border-white/[0.05]
+        py-24
+    "
+            >
 
+                <div
+                    className="
+            max-w-[1500px]
+            mx-auto
+            px-6
+            md:px-12
+            lg:px-[72px]
+        "
+                >
+
+                    <div
+                        className="
+                max-w-[900px]
+            "
+                    >
+
+                        <div
+                            className="
+                    text-[10px]
+                    uppercase
+                    tracking-[0.38em]
+                    text-[#8f7a58]
+                    mb-6
+                "
+                        >
+                            Current Release
+                        </div>
+
+                        <h2
+                            className="
+                    font-serif
+                    text-[clamp(2.5rem,4vw,4rem)]
+                    leading-[0.95]
+                    mb-6
+                "
+                        >
+                            Everything Tender Eventually Breaks
+                        </h2>
+
+                        <p
+                            className="
+                    text-[20px]
+                    leading-[1.9]
+                    text-[#b8ada1]
+                    mb-10
+                    max-w-[700px]
+                "
+                        >
+                            A psychological literary novel about
+                            emotional dependence, loneliness and
+                            invisible emotional violence.
+                        </p>
+
+                        <div
+                            className="
+                    flex
+                    flex-wrap
+                    gap-4
+                "
+                        >
+
+                            <AmazonButton
+                                book="everything-tender-eventually-breaks"
+                                format="kindle"
+                                source="about"
+                                url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26/ref=tmm_kin_swatch_0"
+                            >
+                                Read on Kindle
+                            </AmazonButton>
+
+                            <AmazonButton
+                                book="everything-tender-eventually-breaks"
+                                format="paperback"
+                                source="about"
+                                url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3"
+                            >
+                                Buy Paperback
+                            </AmazonButton>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
         </main>
 
     )

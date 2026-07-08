@@ -1,3 +1,4 @@
+import AmazonButton from "@/components/analytics/AmazonButton"
 import Link from "next/link"
 
 import Image from "next/image"
@@ -197,6 +198,35 @@ export default async function ReadPage({
 
                                     </div>
 
+                                    <div
+                                        className="
+        mt-8
+        flex
+        flex-wrap
+        gap-4
+    "
+                                    >
+
+                                        <AmazonButton
+                                            book={book.slug}
+                                            format="kindle"
+                                            source="sample"
+                                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26"
+                                        >
+                                            Read on Kindle
+                                        </AmazonButton>
+
+                                        <AmazonButton
+                                            book={book.slug}
+                                            format="paperback"
+                                            source="sample"
+                                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3"
+                                        >
+                                            Buy Paperback
+                                        </AmazonButton>
+
+                                    </div>
+
                                 </CinematicSection>
 
                                 <CinematicSection delay={0.15}>
@@ -289,6 +319,35 @@ export default async function ReadPage({
                                             </span>
 
                                         </Link>
+
+                                    </div>
+
+                                    <div
+                                        className="
+        mt-8
+        flex
+        flex-wrap
+        gap-4
+    "
+                                    >
+
+                                        <AmazonButton
+                                            book={book.slug}
+                                            format="kindle"
+                                            source="sample"
+                                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26"
+                                        >
+                                            Read on Kindle
+                                        </AmazonButton>
+
+                                        <AmazonButton
+                                            book={book.slug}
+                                            format="paperback"
+                                            source="sample"
+                                            url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3"
+                                        >
+                                            Buy Paperback
+                                        </AmazonButton>
 
                                     </div>
 

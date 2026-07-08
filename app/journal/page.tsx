@@ -1,5 +1,5 @@
 import CinematicSection from "@/components/cinematic/core/CinematicSection"
-
+import AmazonButton from "@/components/analytics/AmazonButton"
 export default function JournalPage() {
 
     return (
@@ -106,7 +106,38 @@ export default function JournalPage() {
                             </p>
 
                         </CinematicSection>
+                        <CinematicSection delay={0.16}>
 
+                            <div
+                                className="
+            mt-10
+            flex
+            flex-wrap
+            gap-4
+        "
+                            >
+
+                                <AmazonButton
+                                    book="everything-tender-eventually-breaks"
+                                    format="kindle"
+                                    source="journal"
+                                    url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena-ebook/dp/B0H73C3T26"
+                                >
+                                    Read on Kindle
+                                </AmazonButton>
+
+                                <AmazonButton
+                                    book="everything-tender-eventually-breaks"
+                                    format="paperback"
+                                    source="journal"
+                                    url="https://www.amazon.com/Everything-Tender-Eventually-Breaks-Lena/dp/B0H73RN4K3"
+                                >
+                                    Buy Paperback
+                                </AmazonButton>
+
+                            </div>
+
+                        </CinematicSection>
                     </div>
 
                 </div>
